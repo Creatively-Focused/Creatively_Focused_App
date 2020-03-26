@@ -10,4 +10,5 @@ function* getDetail(action) {
     let response = yield axios.get(`/api/teacherList/${action.payload}`);
     yield put({type: 'SET_TEACHER', payload: response.data[0]})
 }
+
 export default teacherDetailSaga;

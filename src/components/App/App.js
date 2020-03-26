@@ -23,7 +23,8 @@ import AddDistrictForm from '../AddDistrictForm/AddDistrictForm';
 import AddSchoolForm from '../AddSchoolForm/AddSchoolForm';
 import './App.css';
 import TaskDetailPage from '../TaskDetailPage/TaskDetailPage';
-import twilio from '../twilio/twilio'
+import twilio from '../twilio/twilio';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 class App extends Component {
 
@@ -39,6 +40,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <ScrollToTop>
         <div>
           <div className="nav">
             <header className="nav-title" id="CFlogo">CREATIVELY FOCUSED</header>
@@ -99,7 +101,7 @@ class App extends Component {
               exact
               path="/addschool"
               component={AddSchoolForm}
-            />
+            />       
             <ProtectedRoute
               exact
               path="/addstudent"
@@ -131,10 +133,11 @@ class App extends Component {
             component={twilio}
             />
             {/* If none of the other routes matched, we will show a 404. */}
-            <Route render={() => <h1>Huh? Are you stupid? 404 dummy</h1>} />
+            <Route render={() => <h1>404 Error in server</h1>} />
           </Switch>
           <Footer />
         </div>
+        </ScrollToTop>
       </Router>
     )
   }

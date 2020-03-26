@@ -10,10 +10,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 
 const styles = {
-
     card: {
         minWidth: 400,
-        paddingBottom: '20%',
     },
     bullet: {
         display: 'inline-block',
@@ -23,15 +21,10 @@ const styles = {
     title: {
         fontSize: 14,
     },
-    pos: {
-        marginBottom: 12,
-    },
     paper: {
-        height: 100,
+        height: 50,
         width: 140,
     }
-
-
 };
 
 class StudentItem extends Component {
@@ -54,7 +47,7 @@ class StudentItem extends Component {
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
                         <Paper >
-                            <CardContent id="studentCard">
+                            <CardContent id="userCard">
                                 <li>
                                     {this.props.student.lastname}, {this.props.student.firstname}
                                     <div id="rightButton">

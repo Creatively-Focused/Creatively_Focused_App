@@ -13,9 +13,7 @@ const styles = {
 
     card: {
         minWidth: 400,
-        paddingBottom: '20%',
         padding: '0 30px',
-        
     },
     bullet: {
         display: 'inline-block',
@@ -29,11 +27,9 @@ const styles = {
         marginBottom: 12,
     },
     paper: {
-        height: 100,
+        height: 50,
         width: 140,
     },
-    
-
 };
 
 class UserItem extends Component {
@@ -52,15 +48,14 @@ class UserItem extends Component {
                             <CardContent id="userCard">
                                 <li>
                                     {this.props.teacher.lastname}, {this.props.teacher.firstname}
-                                        <div id="rightButton">
-                                            <Button size="small" variant="outlined" key={this.props.teacher.id} onClick={(event) => this.goDetail(event, this.props.teacher)}>view user details</Button>
-                                        </div>
+                                    <div id="rightButton">
+                                        <Button size="small" variant="outlined" key={this.props.teacher.id} onClick={(event) => this.goDetail(event, this.props.teacher)}>view user details</Button>
+                                    </div>
                                 </li>
                             </CardContent>
                         </Paper>
                     </Grid>
                 </Grid>
-               
             </div>
         )
     }
