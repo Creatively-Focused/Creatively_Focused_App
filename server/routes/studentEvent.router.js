@@ -145,4 +145,46 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
+router.post('/', rejectUnauthenticated, (res) => {
+    console.log('in studentEvent.router POST');
+    let queryText = `
+    INSERT INTO "student_event" 
+    ("student_id", "event_id", "due_date") 
+    VALUES
+    (35, 1, '2020-10-20'), 
+    (35, 2, '2020-11-05'), 
+    (35, 3, '2020-11-09'), 
+    (35, 4, '2020-11-11'), 
+    (35, 5, '2020-11-20'), 
+    (35, 6, '2020-11-30'), 
+    (35, 7, '2020-12-03'), 
+    (35, 8, '2020-12-04'), 
+    (35, 9, '2024-06-20');`
+    pool.query(queryText)
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('error in addStudent post req in server', error);
+            res.sendStatus(500);
+        });
+
+});
+
+router.delete('/', rejectUnauthenticated, (req, res) => {
+    const id = req.params.id
+    console.log('in delete route', id)
+    const queryText = `UPDATE "student_event" 
+    SET "completed" = NOT "completed",
+    "date_completed" = now(),
+    "completed_by" = ${req.user.id}
+    WHERE "student_id"=${req.body.id};`
+    pool.query(queryText, [id])
+        .then(() => { res.sendStatus(200) })
+        .catch((err) => {
+            console.log(err)
+            res.sendStatus(500)
+        })
+});
+
 module.exports = router;

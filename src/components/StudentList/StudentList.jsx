@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import StudentItem from '../StudentItem/StudentItem';
 import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 
 // styling
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import './StudentList.css';
 
 const styles = {
     bullet: {
@@ -24,31 +23,23 @@ const styles = {
 
 
 class StudentList extends Component {
-// calls 'GET_STUDENTS' which then gets a list of students from the database
-    componentDidMount() {
-        this.props.dispatch({
-            type: 'GET_STUDENTS'
-        })
-    }
 
     render() {
         console.log(this.props.reduxState.students);
         return (
             <div>
                 <ul>
-                    <Typography className="student-name" gutterBottom variant="h5" component="h2">
-                        Student List
-                    </Typography>
-
-                    <Link className="connectorLink" to="/addstudent">
-                        <button className="linkBtn">
-                            ADD NEW STUDENT
-                    </button>
+                    <h1 className="student-list">STUDENT LIST</h1>
+                    <Link style={{ backgroundColor: 'transparent' }} className="connectorLink" to="/addstudent">
+                        <div id="Button">
+                            <button className="linkBtn student-add">
+                                ADD NEW STUDENT
+                            </button>
+                        </div>
                     </Link>
                     {this.props.reduxState.students.map(student => {
                         return <StudentItem id="studentListItem" key={student.id} student={student} />
                     })}
-
                 </ul>
             </div>
         )

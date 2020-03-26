@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import TaskList from '../TaskList/TaskList';
+// import TaskList from '../TaskList/TaskList';
 import StudentList from '../StudentList/StudentList';
-import TeacherTaskList from '../TeacherTaskList/TeacherTaskList'
+import TeacherTaskList from '../TeacherTaskList/TeacherTaskList';
 import Popup from 'reactjs-popup';
 import Button from '@material-ui/core/Button';
 
 //styling
 import logo from './logo square color.jpg';
 import './UserDetailPage.css';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+// import Card from '@material-ui/core/Card';
+// import CardActions from '@material-ui/core/CardActions';
+// import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 
 
-const styles = {
-    card: {
-        maxWidth: 345,
+// const styles = {
+//     card: {
+//         maxWidth: 345,
 
-    },
-    media: {
-        height: 140,
-    },
+//     },
+//     media: {
+//         height: 140,
+//     },
 
-};
+// };
+
 
 class UserDetailPage extends Component {
 
@@ -65,30 +65,27 @@ class UserDetailPage extends Component {
         let user = this.props.reduxState.teacherDetail;
         return (
             <div>
-                <Grid>
-                    <Card>
+                {/* <Grid> */}
+                    {/* <Card className="user-content">
+                        <CardContent id="cardcontent"> */}
+                            <Typography className="user-name" gutterBottom variant="h5" component="h2">
+                                USER: {user.firstname} {user.lastname}
+                            </Typography>
 
-                        <CardActionArea>
-                            <CardContent className="user-content">
-                                <Typography className="user-name" gutterBottom variant="h5" component="h2">
-                                    User: {user.firstname} {user.lastname}
-                                </Typography>
+                            <Typography>
+                                <ul id="cardContent">
+                                    <li>E-Mail/Username: {user.username}</li>
+                                    <li>School: {user.school}</li>
+                                    <li>City: {user.city}</li>
+                                    <li>State: {user.state}</li>
+                                    <li>ISD: {user.isd}</li>
+                                    <li>Phone Number: {user.phone}</li>
+                                </ul>
+                            </Typography>
+                        {/* </CardContent> */}
 
-                                <Typography component="p">
-                                    <ul>
-                                        <li>E-Mail/Username: {user.username}</li>
-                                        <li>School: {user.school}</li>
-                                        <li>City: {user.city}</li>
-                                        <li>State: {user.state}</li>
-                                        <li>ISD: {user.isd}</li>
-                                        <li>Phone Number: {user.phone}</li>
-
-                                    </ul>
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-
-                        <CardActions className="student-buttons">
+                        {/* <CardActions className="student-buttons"> */}
+                        <div id="Button">
                             <Button size="small" variant="outlined" onClick={this.editUser}>Edit</Button>
                             <Button>
                                 <Popup trigger={<Button size="small" variant="outlined" > DELETE </Button>} modal>
@@ -105,11 +102,12 @@ class UserDetailPage extends Component {
                                 </Popup>
                             </Button>
                             <Button size="small" variant="outlined" onClick={this.goToUserList}>BACK TO USER LIST</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <TaskList />
-                <StudentList />
+                        </div>
+                        {/* </CardActions>
+                    </Card> */}
+                {/* </Grid> */}
+                <TeacherTaskList id="Button"/>
+                <StudentList id="Button"/>
             </div>
         )
     }
